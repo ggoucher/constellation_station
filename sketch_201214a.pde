@@ -133,7 +133,6 @@ void mouseClicked()
       
       //creates a line to a new star
       Stars[currentStar - 1].add_line(Stars[currentStar - 1].x, Stars[currentStar - 1].y, mouseX, mouseY);
-      print(Stars[currentStar - 1].lines);
     }
    
     // Create a Star and add it to the current index in our array.
@@ -162,7 +161,9 @@ void keyPressed() {
   //to clear
   if (key == ENTER) {
     
+    //Idea for nulling array taken from processing forum link in README
     for (int i = 0; i < numStars; i++) {
+      
       Stars[i]=null;
     }
     

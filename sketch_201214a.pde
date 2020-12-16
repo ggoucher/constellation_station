@@ -31,7 +31,7 @@ class Star {
      //randomizing star ellipse size
      this.size = this.canvas.random(20,40);
      
-     //radomizing color along lines of normal star colors
+     //radomizing color along lines of normal star colors, we don't want red stars, I don't find them relaxing!
      this.starGreen = this.canvas.random(100, 255);
      this.starBlue = this.canvas.random(100, 255);
      
@@ -58,6 +58,7 @@ class Star {
     this.lines.remove(index);
   }
   
+  //This method displays our stars!
   void display() {
     // This method specifies that the star will have no outline
     this.canvas.noStroke();
@@ -69,10 +70,14 @@ class Star {
     this.canvas.ellipse(x, y, size, size);
   }
   
+  //This method  displays our constellation lines
   void display_lines() {
+    
     //This method allows us to display the lines we have beneath our stars.
     for (int i = 0; i < this.lines.size(); i++) {
+      
       ArrayList<Float> lineToDraw = this.lines.get(i);
+      
       stroke(255);
       //simply creates a line from our float array list
       this.canvas.line(lineToDraw.get(0), lineToDraw.get(1), lineToDraw.get(2), lineToDraw.get(3));
@@ -111,13 +116,16 @@ void draw() {
 
 void mouseClicked() 
  {
+   
     // Create a line from our current star to the next one. 
-    
     if (currentStar >= 1) {
       
-      //creating a line to preexisting star
+      //creating a line to preexisting star, if present
       for (int i = 0; i < numStars; i++) {
+        
         if ((abs(Stars[i].x - mouseX) <= 50) && (abs(Stars[i].y - mouseY) <= 50)) {
+          
+           //adds the line between preexisting stars and ends the function.
            Stars[currentStar - 1].add_line(Stars[currentStar - 1].x, Stars[currentStar - 1].y, Stars[i].x, Stars[i].y);
            return;
         }
@@ -153,23 +161,31 @@ void keyPressed() {
  
   //to clear
   if (key == ENTER) {
+    
     for (int i = 0; i < numStars; i++) {
       Stars[i]=null;
     }
+    
     currentStar=0;
     numStars=0;
   }
   
   //to backtrace
   if (key == 'b' && currentStar >= 1) {
+    
     //steps back just one constellation point if the constellation lines were merely connectors
     if (Stars[currentStar - 1].lines.size() >= 1) {
+      
       Stars[currentStar - 1].remove_line(Stars[currentStar - 1].lines.size() - 1);
     } else { //deletes the prior star and the constellation connecting it to the star before itself.
+    
       Stars[currentStar - 1] = null;
+      
       numStars--;
       currentStar--;
+      
       if (numStars >= 1) {
+        
         Stars[currentStar - 1].remove_line(Stars[currentStar - 1].lines.size() - 1);
       }
     }

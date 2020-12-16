@@ -4,6 +4,8 @@
 
 [Website for Project](https://constellationstation.netlify.app/)
 
+NOTE: If running website locally, please run with a Live Server. I used Live Server by Ritwick Dey.
+
 ## Project Overview
 
 My project encourages casual creativity in the users who decide to utilize it. They are creating constellation systems. This is done by the user clicking, and, upon release, a star being placed. When they click to place a new star, it is placed, and a constellation line is drawn between the two. Users are kept engaged by easy backtracking, easy clearing, and pretty colors with a relatively user friendly interface. Additionally, they are able to draw constellation lines between pre-existing stars (from their current star), which adds an additional creative component, making them proud of their piece of work that is more uniquely theirs. A line between preexisting stars is drawn if one clicks within 50 pixels of another star. By providing users a space where they can make something visually appealing and uniquely theirs, they are able to take pride in their original creation, and can easily screenshot and share their piece of work on social media should they choose to do so.
